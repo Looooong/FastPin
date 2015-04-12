@@ -1,3 +1,5 @@
+#include "FastPin.h"
+
 FastPin::FastPin(byte id, bool isOutput, bool isHigh)
   :
   _pinId(id),
@@ -34,31 +36,6 @@ void FastPin::changePin(byte id, bool isOutput, bool isHigh)
     high();
   else
     low();
-};
-
-void FastPin::input()
-{
-  *_ddr &= ~_bitmask;
-};
-
-void FastPin::output()
-{
-  *_ddr |= _bitmask;
-};
-
-void FastPin::high()
-{
-  *_port |= _bitmask;
-};
-
-void FastPin::low()
-{
-  *_port &= ~_bitmask;
-};
-
-bool FastPin::read()
-{
-  return *_pin & _bitmask;
 };
 
 byte FastPin::pinId() const

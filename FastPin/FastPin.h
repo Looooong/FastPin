@@ -1,3 +1,8 @@
+#ifndef FAST_PIN_H_
+#define FAST_PIN_H_
+
+#include "Arduino.h"
+
 class FastPin {
   public:
     // Contruct with initial state
@@ -27,3 +32,30 @@ class FastPin {
     volatile byte * _port;
     volatile byte * _pin;
 };
+
+void FastPin::input()
+{
+  *_ddr &= ~_bitmask;
+};
+
+void FastPin::output()
+{
+  *_ddr |= _bitmask;
+};
+
+void FastPin::high()
+{
+  *_port |= _bitmask;
+};
+
+void FastPin::low()
+{
+  *_port &= ~_bitmask;
+};
+
+bool FastPin::read()
+{
+  return *_pin & _bitmask;
+};
+
+#endif//FAST_PIN_H_

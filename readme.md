@@ -1,6 +1,7 @@
 # Arduino - FastPin
 
 This library provide a quick way for digital port manipulation - an alternative to `pinMode`, `digitalWrite` and `digitalRead` - where speed is crucial.
+
 This is **FAST** pin.
 
 ## Installation
