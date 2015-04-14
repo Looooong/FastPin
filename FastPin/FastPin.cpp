@@ -4,6 +4,7 @@ FastPin::FastPin(byte id, bool isOutput, bool isHigh)
   :
   _pinId(id),
   _bitmask(digitalPinToBitMask(_pinId)),
+  _notBitmask(~_bitmask),
   _ddr(portModeRegister(digitalPinToPort(_pinId))),
   _port(portOutputRegister(digitalPinToPort(_pinId))),
   _pin(portInputRegister(digitalPinToPort(_pinId)))
@@ -23,6 +24,7 @@ void FastPin::changePin(byte id, bool isOutput, bool isHigh)
 {
   _pinId = id;
   _bitmask = digitalPinToBitMask(_pinId);
+  _notBitmask = ~_bitmask;
   _ddr = portModeRegister(digitalPinToPort(_pinId));
   _port = portOutputRegister(digitalPinToPort(_pinId));
   _pin = portInputRegister(digitalPinToPort(_pinId));

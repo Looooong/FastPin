@@ -28,6 +28,7 @@ class FastPin {
   private:
     byte _pinId;
     byte _bitmask;
+	byte _notBitmask; // Bitwise NOT of _bitmask, a trick for faster manipulation
     volatile byte * _ddr;
     volatile byte * _port;
     volatile byte * _pin;
@@ -35,7 +36,7 @@ class FastPin {
 
 void FastPin::input()
 {
-  *_ddr &= ~_bitmask;
+  *_ddr &= _notBitmask;
 };
 
 void FastPin::output()
@@ -50,7 +51,7 @@ void FastPin::high()
 
 void FastPin::low()
 {
-  *_port &= ~_bitmask;
+  *_port &= _notBitmask;
 };
 
 bool FastPin::read()
