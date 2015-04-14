@@ -16,7 +16,7 @@ class FastPin {
     inline void output();
     inline void high();
     inline void low();
-    inline bool read();
+    inline byte read(); // The result of bitwise operation is byte, so...
     // Getters don't need to be 'inline' to be fast
     // However, port manipulation with getters is a bit slower than those functions above...
     byte pinId() const;
@@ -28,7 +28,7 @@ class FastPin {
   private:
     byte _pinId;
     byte _bitmask;
-	byte _notBitmask; // Bitwise NOT of _bitmask, a trick for faster manipulation
+    byte _notBitmask; // Bitwise NOT of _bitmask, a trick for faster manipulation
     volatile byte * _ddr;
     volatile byte * _port;
     volatile byte * _pin;
@@ -54,7 +54,7 @@ void FastPin::low()
   *_port &= _notBitmask;
 };
 
-bool FastPin::read()
+byte FastPin::read()
 {
   return *_pin & _bitmask;
 };

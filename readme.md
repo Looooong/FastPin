@@ -16,7 +16,7 @@ Copy **FastPin** folder to Arduino library folder
 - `inline void output()` equavilent to `pinMode(pinId, OUTPUT)`.
 - `inline void high()` equavilent to `digitalWrite(pinId, HIGH)`.
 - `inline void low()` equavilent to `digitalWrite(pinId, LOW)`.
-- `inline bool read()` equavilent to `digitalRead(pinId)`.
+- `inline byte read()` equavilent to `digitalRead(pinId)`.
 - `byte pinId() const` get id of the pin.
 - `byte bitmask() const` get bitmask of the pin, is used with DDR, PORT and PIN.
 - `volatile byte * ddr() const` get DDR register of the pin.
